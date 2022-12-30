@@ -35,7 +35,6 @@ export async function getStaticProps() {
     const {data} = await client.query({
         query: GET_ARTICLES
     });
-    console.log(data);
     return {
         props: {
             articlesPage: data.articlesPage.data,

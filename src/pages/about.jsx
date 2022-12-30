@@ -41,7 +41,6 @@ function MailIcon(props) {
 }
 
 export default function About({aboutPage}) {
-  console.log(aboutPage)
   return (
     <>
       <Head>
@@ -105,7 +104,6 @@ export async function getStaticProps() {
   const {data} = await client.query({
     query: GET_ABOUT
   });
-  console.log(data);
   return {
     props: {
       aboutPage: data.aboutPage.data,

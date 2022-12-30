@@ -186,8 +186,7 @@ function Resume({jobs}) {
 }
 
 export default function Home({ page }) {
-    console.log(page)
-    return (
+        return (
         <>
             <Head>
                 <title>
