@@ -67,7 +67,7 @@ export default function About({aboutPage}) {
               {aboutPage?.attributes?.Title}
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} ß>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {aboutPage?.attributes?.Content}
               </ReactMarkdown>
             </div>
@@ -85,7 +85,7 @@ export default function About({aboutPage}) {
                 Follow on LinkedIn
               </SocialLink>
               <SocialLink
-                href="mailto:spencer@planetaria.tech"
+                href="mailto:waynefosterjr@cloud-way.dev"
                 icon={MailIcon}
                 className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
               >

@@ -128,7 +128,7 @@ function Resume({jobs}) {
         return {
             company: job?.attributes?.Company,
             title: job?.attributes?.Title,
-            logo: uri + job?.attributes?.icon?.data?.attributes?.url,
+            logo: job?.attributes?.icon?.data?.attributes?.url,
             start: formatJobDate(job?.attributes?.Start),
             end: endDate
         }
