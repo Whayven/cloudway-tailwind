@@ -120,16 +120,16 @@ function Newsletter() {
 
 function Resume({jobs}) {
     let resume = jobs.map((job, index) => {
-        const endDate = job.attributes.End ? formatJobDate(job.attributes.End) : {
+        const endDate = job?.attributes?.End ? formatJobDate(job?.attributes?.End) : {
             label: 'Present',
             dateTime: new Date().getFullYear()
         }
 
         return {
-            company: job.attributes.Company,
-            title: job.attributes.Title,
-            logo: uri + job.attributes.icon.data.attributes.url,
-            start: formatJobDate(job.attributes.Start),
+            company: job?.attributes?.Company,
+            title: job?.attributes?.Title,
+            logo: uri + job?.attributes?.icon?.data?.attributes?.url,
+            start: formatJobDate(job?.attributes?.Start),
             end: endDate
         }
     })
