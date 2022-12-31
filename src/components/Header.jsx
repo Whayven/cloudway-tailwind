@@ -3,16 +3,16 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.png'
 import { Fragment, useEffect, useRef } from 'react'
+import { GET_HEADER } from '@/graphql/header/queries'
 
 const links = [
   { href: '/about', label: 'About' },
   { href: '/articles', label: 'Articles' },
   { href: '/projects', label: 'Projects' },
-  { href: 'uses', label: 'Uses' },
+  { href: '/uses', label: 'Uses' },
 ]
 
 function CloseIcon(props) {
@@ -241,7 +241,7 @@ function Avatar({ large = false, className, ...props }) {
       {...props}
     >
       <Image
-        src={avatarImage}
+        src={header?.attributes?.Logo?.data?.attributes?.url}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
@@ -254,7 +254,7 @@ function Avatar({ large = false, className, ...props }) {
   )
 }
 
-export function Header() {
+export function Header({ header }) {
   let isHomePage = useRouter().pathname === '/'
 
   let headerRef = useRef()
@@ -431,4 +431,16 @@ export function Header() {
       {isHomePage && <div style={{ height: 'var(--content-offset)' }} />}
     </>
   )
+}
+
+export async function getStaticProps() {
+  const client = initializeApollo();
+  const {data} = await client.query({
+    query: GET_HEADER
+  });
+  return {
+    props: {
+      header: data.header.data,
+    },
+  }
 }

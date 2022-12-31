@@ -129,6 +129,13 @@ query GET_ABOUT {
         github
         email
         Content
+        Cover {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
       }
     }
   }
