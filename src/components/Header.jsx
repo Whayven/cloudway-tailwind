@@ -6,7 +6,6 @@ import clsx from 'clsx'
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.png'
 import { Fragment, useEffect, useRef } from 'react'
-import { GET_HEADER } from '@/graphql/header/queries'
 
 const links = [
   { href: '/about', label: 'About' },
@@ -241,7 +240,7 @@ function Avatar({ large = false, className, ...props }) {
       {...props}
     >
       <Image
-        src={header?.attributes?.Logo?.data?.attributes?.url}
+        src={avatarImage}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
@@ -254,7 +253,7 @@ function Avatar({ large = false, className, ...props }) {
   )
 }
 
-export function Header({ header }) {
+export function Header() {
   let isHomePage = useRouter().pathname === '/'
 
   let headerRef = useRef()
@@ -431,16 +430,4 @@ export function Header({ header }) {
       {isHomePage && <div style={{ height: 'var(--content-offset)' }} />}
     </>
   )
-}
-
-export async function getStaticProps() {
-  const client = initializeApollo();
-  const {data} = await client.query({
-    query: GET_HEADER
-  });
-  return {
-    props: {
-      header: data.header.data,
-    },
-  }
 }
