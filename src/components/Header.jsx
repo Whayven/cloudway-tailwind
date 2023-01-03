@@ -231,7 +231,7 @@ function AvatarContainer({ className, ...props }) {
   )
 }
 
-function Avatar({ large = false, className, ...props }) {
+function Avatar({ large = false, className, avatarUrl, ...props }) {
   return (
     <Link
       href="/"
@@ -240,7 +240,7 @@ function Avatar({ large = false, className, ...props }) {
       {...props}
     >
       <Image
-        src={avatarImage}
+        src={avatarUrl}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
@@ -253,7 +253,7 @@ function Avatar({ large = false, className, ...props }) {
   )
 }
 
-export function Header() {
+export function Header({ header }) {
   let isHomePage = useRouter().pathname === '/'
 
   let headerRef = useRef()
@@ -410,7 +410,7 @@ export function Header() {
               <div className="flex flex-1">
                 {!isHomePage && (
                   <AvatarContainer>
-                    <Avatar />
+                    <Avatar avatarUrl={header?.attributes?.Logo?.data?.attributes?.url} />
                   </AvatarContainer>
                 )}
               </div>

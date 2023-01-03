@@ -16,7 +16,7 @@ function usePrevious(value) {
   return ref.current
 }
 
-export default function App({ Component, pageProps, router }) {
+export default function App({ Component, pageProps, router, header }) {
   let previousPathname = usePrevious(router.pathname)
 
   return (
@@ -27,7 +27,7 @@ export default function App({ Component, pageProps, router }) {
         </div>
       </div>
       <div className="relative">
-        <Header />
+        <Header header={header}  />
         <main>
           <Component previousPathname={previousPathname} {...pageProps} />
         </main>
@@ -35,4 +35,16 @@ export default function App({ Component, pageProps, router }) {
       </div>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const client = initializeApollo();
+  const {data} = await client.query({
+    query: GET_HEADER
+  });
+  return {
+    props: {
+      header: data.header.data,
+    },
+  }
 }
