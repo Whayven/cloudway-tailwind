@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react'
 
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import {initializeApollo} from "@/util/apolloClient";
+import {GET_HEADER} from "@/graphql/pages/queries";
 
 import '@/styles/tailwind.css'
 import 'focus-visible'
@@ -18,7 +20,7 @@ function usePrevious(value) {
 
 export default function App({ Component, pageProps, router, header }) {
   let previousPathname = usePrevious(router.pathname)
-
+  console.log('***app: ' + header);
   return (
     <>
       <div className="fixed inset-0 flex justify-center sm:px-8">
