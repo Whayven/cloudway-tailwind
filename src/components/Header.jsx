@@ -240,7 +240,7 @@ function Avatar({ large = false, className, avatarUrl, ...props }) {
       {...props}
     >
       <Image
-        src={avatarUrl}
+        src={avatarUrl || avatarImage}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
