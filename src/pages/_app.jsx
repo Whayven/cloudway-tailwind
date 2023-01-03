@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import {initializeApollo} from "@/util/apolloClient";
-import {GET_HEADER} from "@/graphql/pages/queries";
+import {GET_HEADER} from "@/graphql/header/queries";
 
 import '@/styles/tailwind.css'
 import 'focus-visible'
