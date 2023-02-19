@@ -248,13 +248,13 @@ function Avatar({ large = false, className, avatarUrl, ...props }) {
           large ? 'h-16 w-16' : 'h-9 w-9'
         )}
         priority
+        // unoptimized={process.env.NODE_ENV === 'development'}
       />
     </Link>
   )
 }
 
-export function Header({ header }) {
-  console.log(header);
+export function Header() {
   let isHomePage = useRouter().pathname === '/'
 
   let headerRef = useRef()
@@ -411,7 +411,7 @@ export function Header({ header }) {
               <div className="flex flex-1">
                 {!isHomePage && (
                   <AvatarContainer>
-                    <Avatar avatarUrl={header?.attributes?.Logo?.data?.attributes?.url} />
+                    <Avatar avatarUrl={avatarImage} />
                   </AvatarContainer>
                 )}
               </div>

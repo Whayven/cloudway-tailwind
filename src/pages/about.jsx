@@ -15,6 +15,8 @@ import {GET_ABOUT} from "@/graphql/pages/queries";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 
+
+
 function SocialLink({ className, href, children, icon: Icon }) {
   return (
     <li className={clsx(className, 'flex')}>
@@ -41,6 +43,7 @@ function MailIcon(props) {
 }
 
 export default function About({aboutPage}) {
+  const coverUrl = process.env.NODE_ENV === 'development'  ? 'http://localhost:1337' + aboutPage?.attributes?.Cover?.data?.attributes?.url : aboutPage?.attributes?.Cover?.data?.attributes?.url;
   return (
     <>
       <Head>
@@ -55,10 +58,13 @@ export default function About({aboutPage}) {
           <div className="lg:pl-20">
             <div className="max-w-xs px-2.5 lg:max-w-none">
               <Image
-                src={aboutPage?.attributes?.Cover?.data?.attributes?.url}
-                alt=""
+                src={coverUrl}
+                alt="Wayne Foster Jr"
                 sizes="(min-width: 1024px) 32rem, 20rem"
+                width={640}
+                height={640}
                 className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+                unoptimized={true}
               />
             </div>
           </div>

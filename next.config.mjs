@@ -7,7 +7,8 @@ const nextConfig = {
   pageExtensions: ['jsx', 'mdx'],
   reactStrictMode: true,
   images: {
-    loader:'imgix',
+    unoptimized: true,
+    loader:'akamai',
     path: '',
     domains: ['localhost', 'cw-dev-stack-cloudwaydev31d63348-s6nokm8dvki6.s3.amazonaws.com'],
     formats: ['image/avif', 'image/webp'],
